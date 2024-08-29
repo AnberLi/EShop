@@ -2,7 +2,7 @@
   <div class="fullscreen-bg">
     <div class="login-container">
       <div class="left-panel">
-        <img src="@/images/img.png" alt="Login Image" class="login-image" />
+        <img src="@/images/img.png" alt="Login Image" class="login-image"/>
       </div>
       <div class="right-panel">
         <el-form ref="form" :model="form" label-width="80px">
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -35,6 +36,19 @@ export default {
     onSubmit() {
       // 处理登录逻辑
       console.log('提交的表单数据：', this.form);
+      this.$axios.post("/login/check", {
+        username: "admin",
+        password: "11111"
+      }).then((response) => {
+        console.log(response.data.custom);
+        if(response.data.custom){
+          if(response.data.custom.msg === "success"){
+            //TODO
+            alert("登录成功")
+            this.$router.push("/");
+          }
+        }
+      })
     }
   }
 };

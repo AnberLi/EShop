@@ -6,7 +6,7 @@ import axios from "axios";
 import router from "./router/index";
 
 //配置默认接口前缀
-axios.defaults.baseURL = "http://localhost:8081";
+axios.defaults.baseURL = "http://localhost:8082/rest";
 //给axios重命名，非必要
 Vue.prototype.$axios = axios;
 
